@@ -1,7 +1,7 @@
 const btn = document.querySelector('.button');
 
 const r = new rive.Rive({
-  src: 'SmartAll.riv',
+  src: './smartAll.riv',
   canvas: document.getElementById('canvas'),
   autoplay: true,
   stateMachines: 'Anime',
