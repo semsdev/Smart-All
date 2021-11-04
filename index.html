@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartAll</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <input type="button" class="button" id="button" />
+      <label for="button" class="label"
+        ><canvas id="canvas" width="500" height="500"> </canvas
+      ></label>
+    </div>
+
+    <script src="https://unpkg.com/rive-js"></script>
+    <script>
+      const btn = document.querySelector('.button');
+
+      const r = new rive.Rive({
+        src: 'SmartAll.riv',
+        canvas: document.getElementById('canvas'),
+        autoplay: true,
+        stateMachines: 'Anime',
+        fit: rive.Fit.cover,
+        onLoad: (_) => {
+          const inputs = r.stateMachineInputs('Anime');
+          const startTrigger = inputs.find((i) => i.name === 'Start');
+          btn.onclick = (e) => {
+            e.preventDefault();
+            startTrigger.fire();
+          };
+        },
+      });
+    </script>
+  </body>
+</html>
